@@ -1,9 +1,0 @@
-Tesla Model S
-40000
-4 //4 size of array
-
-Traction Control //Name of OptionSet
-3 //size of array of options
-Standard
-ABS
-ABS with Advance Trac
