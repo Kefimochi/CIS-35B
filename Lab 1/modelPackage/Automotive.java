@@ -1,6 +1,7 @@
 package modelPackage;
 import java.io.Serializable;
 
+import modelPackage.*;
 import modelPackage.OptionSet.Option;
 
 public class Automotive implements Serializable {
@@ -9,8 +10,8 @@ public class Automotive implements Serializable {
     private OptionSet opset[];
 
     public Automotive() {
-        name = "";
-        basePrice = 0.00;
+        
+        basePrice = 0;
     }
 
     public Automotive(String name, double basePrice) {
@@ -22,7 +23,8 @@ public class Automotive implements Serializable {
         this.name = name;
         this.basePrice = basePrice;
         opset = new OptionSet[size];
-        for (int i = 0; i < opset.length; i++) {
+        
+        for (int i = 0; i < opset.length; i++) { // to avoid NPE
             opset[i] = new OptionSet();
         }
     }
@@ -37,6 +39,13 @@ public class Automotive implements Serializable {
 
     public OptionSet[] getOptionSets() {
         return opset;
+    }
+    
+    public OptionSet.Option[] getOptions(int index) {
+//    	if (!isOptionsNull(index)) {
+    		return getOptionSet(index).getOptions();
+//    	}
+//    	return null;
     }
     
     public OptionSet getOptionSet(int index) {
@@ -67,11 +76,15 @@ public class Automotive implements Serializable {
     }
     
     public void makeOptionSet(int index, String name,int size) {
-    	opset[index] = new OptionSet(name,size);
+    	opset[index].setName(name);
+    	opset[index].makeOptionsArray(size);
     }
     
-	public void makeOption(int opsetIndex, int optIndex, String name,int size) {
-	    opset[opsetIndex].setOptions(new OptionSet.Option[size]);
+    public void makeOption(int i, int j,
+			String optionName, double price) {
+		if (!isOptionSetsNull()) {
+			opset[i].makeOption(j, optionName, price);
+		}
 	}
 
     public int findOptionSetIndex(String name) {
@@ -132,7 +145,7 @@ public class Automotive implements Serializable {
     }
     
     public void updateOption(String opsetName, String optName, OptionSet.Option newOpt) {
-    	findOptionSet(name).updateOption(optName, newOpt);
+    	findOptionSet(opsetName).updateOption(optName, newOpt);
     }
     
     public void updateOptionName(String opsetName, String optName, String newName) { 
@@ -147,19 +160,16 @@ public class Automotive implements Serializable {
         return opset.equals(null);
     }
     
-    public boolean isOptionsNull() {
-    	for (int i = 0; i < opset.length; i++) {
-    		if((opset[i].getOptions()).equals(null)) return true;
-    	}
-        return false;
+    public boolean isOptionsNull(int i) {
+    	return (opset[i].getOptions()).equals(null);
     }
 
     public void print() {
-        System.out.printf("~~~~~~~~~~~~~~~~~~~~~~~~~~%n\nBase price is $%p\n", name, basePrice);
+        System.out.printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n%s\nBase price is $%.2f\n", name, basePrice);
         if (!isOptionSetsNull()) {
     		for(int i = 0; i < opset.length; i++) {
             	if (opset[i] != null) opset[i].print();
             }	
     	}
     }
-} // end Vertex
+} 

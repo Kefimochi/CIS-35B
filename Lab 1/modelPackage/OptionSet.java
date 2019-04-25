@@ -2,7 +2,7 @@ package modelPackage;
 
 import java.io.Serializable;
 
-class OptionSet implements Serializable {
+public class OptionSet implements Serializable {
     private String name;
     private Option opt[];
 
@@ -33,6 +33,21 @@ class OptionSet implements Serializable {
     protected void setOptions(Option[] opt) {
         this.opt = opt;
     }
+    
+    protected void makeOptionsArray(int size) {
+    	opt = new Option[size];
+    	for (int i = 0; i < opt.length; i++) {
+            opt[i] = new Option();
+        }
+    }
+    
+    protected void makeOption(int j, String optionName, 
+			double price) {
+		if (!isOptionNull()) {
+			opt[j].setName(optionName);
+			opt[j].setPrice(price);
+		}
+	}
 
     protected int findOptionIndex(String name) {
         if (!isOptionNull()) {
@@ -101,7 +116,7 @@ class OptionSet implements Serializable {
     }
 
     protected void print() {
-    	System.out.printf("*********$s*********\n", name);
+    	System.out.printf("*********%s*********\n", name);
     	if (!isOptionNull()) {
     		for(int i = 0; i < opt.length; i++) {
             	if (opt[i] != null) opt[i].print();
@@ -109,7 +124,7 @@ class OptionSet implements Serializable {
     	}
     }
 
-    protected class Option implements Serializable {
+    public class Option implements Serializable {
         private String optName;
         private double price;
 
