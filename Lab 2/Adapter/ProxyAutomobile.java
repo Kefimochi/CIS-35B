@@ -19,16 +19,16 @@ public abstract class ProxyAutomobile {
 	
 	public void BuildAuto(String fileName) {
 		FileIO f = new FileIO();
-		File tempFile = new File(fileName);
 		try {
-			if (tempFile.exists()) a1 = f.readFile(fileName);
-			else throw new ExceptionAuto(101);		
+			a1 = f.readFile(fileName);	
 		} catch (ExceptionAuto e) {
-			a1 = f.readFile(fileName);
+			e.printStackTrace();
 		}
 	}
 	
 	public void printAuto(String Modelname) {
 		a1.print();
 	}
+	
+	public void fix() {}
 }
