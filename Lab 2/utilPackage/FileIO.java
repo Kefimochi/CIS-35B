@@ -5,53 +5,121 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
-import modelPackage.Automotive;
+import java.io.UnsupportedEncodingException;
 
-public class FileIO implements Serializable {
-	public Automotive readFile(String fileName) {
+import exceptionPackage.*;
+import exceptionPackage.ExceptionAuto;
+import modelPackage.Automobile;
+
+public class FileIO {
+	public Automobile readFile(String fileName) throws ExceptionAuto {
 		try {
-			FileReader file = new FileReader(fileName);
-			BufferedReader buff = new BufferedReader(file);
+			FileReader file = null;
+			BufferedReader buff = null;
+			double price = 0;
+			String name = "";
+			int optionSetsSize = 0;
+			FileWriter writer = new FileWriter("D:\\Coding Projects\\CIS 35B\\Lab 2\\data\\exception-log.txt");
+			PrintWriter w = new PrintWriter(writer);
 			
-			// Read basic info and create the car
-			String name = buff.readLine();
-			double price = Double.parseDouble(
-					buff.readLine());
-			int optionSetsSize = Integer.parseInt(
-					buff.readLine());
-			Automotive myCar = new Automotive(
+			
+			try {
+				try {
+					file = new FileReader(fileName);
+					buff = new BufferedReader(file);
+				} catch(IOException event) {
+					throw new ExceptionAuto(101);
+				}
+			} catch (ExceptionAuto e) {
+				file = new FileReader(e.fix());
+				buff = new BufferedReader(file);
+				log(w, e);
+			}
+			
+			name = buff.readLine();
+			
+			try {
+				String temp = buff.readLine();
+					if (temp.equals("")) {
+						throw new ExceptionAuto(201);
+					} else {
+						price = Double.parseDouble(temp);	
+					}
+			} catch (ExceptionAuto e) {
+			//log (d error num & name s, double, string) => new doc write, don't forget to close
+				price = Double.parseDouble(e.fix());
+				log(w, e);
+			}
+			
+			try {
+				String temp = buff.readLine();
+				if (temp.equals("")) {
+					throw new ExceptionAuto(301);
+				} else {
+					optionSetsSize = Integer.parseInt(temp);	
+				}
+			} catch (ExceptionAuto e) {
+				optionSetsSize = Integer.parseInt(e.fix());
+				log(w, e);
+			}
+			
+			Automobile myCar = new Automobile(
 					name, price, optionSetsSize);
 			
-			// Read each OptionSet
 			for (int i = 0; i < optionSetsSize; i++) {
 				buff.readLine(); // Skip a line
-				name = buff.readLine();
+				
+				try {
+					String temp = buff.readLine();
+					if (temp.equals("")) {
+						throw new ExceptionAuto(401);
+					} else {
+						name = temp;	
+					}
+				} catch (ExceptionAuto e) {
+					name = e.fix();
+					log(w, e);
+				}
+//				name = buff.readLine();
+				
 				int optionsSize = Integer.parseInt(
 						buff.readLine());
 				myCar.makeOptionSet(i, name, optionsSize);
-				// Read each Option
+
 				for (int j = 0; j < optionsSize; j++) {
-					name = buff.readLine();
+					try {
+						String temp = buff.readLine();
+						if (temp.equals("")) {
+							throw new ExceptionAuto(501);
+						} else {
+							name = temp;	
+						}
+					} catch (ExceptionAuto e) {
+						name = (e.fix());
+						log(w, e);
+					}
 					price = Integer.parseInt(buff.readLine());
 					myCar.makeOption(i, j, name, price);
 				}
 			}
 			buff.close();
 			file.close();
-			// Return the car
+			w.close();
+			writer.close();
 			return myCar;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		
 		return null;
 	}
 	
-	public void serialize(Automotive car, String fileName) {
+	public void serialize(Automobile car, String fileName) {
 		try {
 			FileOutputStream f = new FileOutputStream(fileName);
 			ObjectOutputStream o = new ObjectOutputStream(f);
@@ -68,13 +136,13 @@ public class FileIO implements Serializable {
 		}
 	}
 	
-	public Automotive deserialize(String fileName) {
+	public Automobile deserialize(String fileName) {
 		try {
 			FileInputStream fi = new FileInputStream(fileName);
 			ObjectInputStream oi = new ObjectInputStream(fi);
 
 			// Read objects
-			Automotive car = (Automotive) oi.readObject();
+			Automobile car = (Automobile) oi.readObject();
 
 			oi.close();
 			fi.close();
@@ -87,5 +155,9 @@ public class FileIO implements Serializable {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void log(PrintWriter w, ExceptionAuto e) {
+		w.printf("~~~~~~~Error %d: %s\n", e.getErrorNum(), e.getErrorMsg());
 	}
 }
