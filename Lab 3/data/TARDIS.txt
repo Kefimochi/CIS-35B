@@ -1,0 +1,23 @@
+TARDIS 2.0
+10000
+****************
+Color
+Deep Blue
+0
+Turquiose
+1002
+****************
+Functionality
+Traveling in time
+1000
+Traveling in space
+100
+Traveling in time && space(!!!)
+20000
+****************
+Doctor as companion
+Yes
+2000000
+No
+0
+ 
