@@ -28,9 +28,13 @@ public class Driver {
 				a3.BuildAuto("D:\\Coding Projects\\CIS 35B\\Lab 3\\data\\" 
 						+ "ford_zagoon_pro.txt", map);
 				
-				map.get("TARDIS 2.0").print();
-				map.get("Ford WagonZTW").print();
-				map.get("Ford ZagoonPro").print();
+//				map.get("TARDIS 2.0").print();
+//				map.get("Ford WagonZTW").print();
+//				map.get("Ford ZagoonPro").print();
+				
+				map.entrySet().forEach(entry -> {
+					if (entry != null) map.get(entry.getKey()).print();
+		        });
 				
 				map.get(0).print();
 //				a1.printAuto("ModelName");	
