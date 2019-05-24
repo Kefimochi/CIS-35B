@@ -14,9 +14,9 @@ public class Driver {
 //		To acess and store value
 		// boolean containsKey(Object key) && containsVa;ue
 		
-		CreatableAuto a1 = new BuildAuto(); 
-		CreatableAuto a2 = new BuildAuto();
-		CreatableAuto a3 = new BuildAuto();
+		BuildAuto a1 = new BuildAuto(); 
+		BuildAuto a2 = new BuildAuto();
+		BuildAuto a3 = new BuildAuto();
 		try {
 			try {
 				a1.BuildAuto("D:\\Coding Projects\\CIS 35B\\Lab 3\\data\\" 

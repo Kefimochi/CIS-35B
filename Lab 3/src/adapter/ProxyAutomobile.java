@@ -6,7 +6,7 @@ import model.*;
 import util.FileIO;
 
 public abstract class ProxyAutomobile {
-	private static Automobile a1;
+	private Automobile a1;
 	
 	public void updateOptionSetName(String modelName, String optionSetName, String
 			newName) {

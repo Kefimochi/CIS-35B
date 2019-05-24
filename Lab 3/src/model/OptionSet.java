@@ -15,6 +15,7 @@ public class OptionSet implements Serializable {
     protected OptionSet(String name) {
         this.name = name;
         opt = new ArrayList<Option>();
+        choice = null;
     }
 
     protected String getName() {
@@ -33,9 +34,10 @@ public class OptionSet implements Serializable {
     protected void setOptionChoice(String choice) {
     	if (choice != null) this.choice = findOption(choice);
     	System.out.print("\nU MADE IT X4\n");
-    	System.out.print("\n" + choice +"\n");
-    	System.out.print("\n" + findOption(choice).getName() +"\n");
-    	System.out.println("\nYOUR NEW OPTION CHOICE IS " + this.choice);
+    	System.out.print("\n " + choice +"\n");
+    	System.out.print("\n Got it?" + this.choice.getName() +"\n");
+    	System.out.println("\nYOUR NEW OPTION CHOICE IS ");
+    	this.choice.print();
     }
 
     protected void setName(String name) {
@@ -51,13 +53,16 @@ public class OptionSet implements Serializable {
 	}
 
     protected int findOptionIndex(String name) {
-        if (!isOptionNull()) {
+//        if (!isOptionNull()) {
         	for (int i = 0; i < opt.size(); i++) {
-        		if (opt.get(i) != null && (opt.get(i).getName()).equals(name)) {
+        		if ((opt.get(i).getName()).equals(name)) {
+        	    	System.out.println("Hahahahha");
+        			opt.get(i).print();
         			return i;
         		}
         	}
-        }
+        	opt.get(0).print();
+//        }
     	return -1;
     }
 
@@ -77,7 +82,7 @@ public class OptionSet implements Serializable {
     	Option myOption = new Option();
     	int index = findOptionIndex(name);
     	myOption = (index != -1) ? opt.get(index) : null;
-    	System.out.print("Name" + myOption.getName());
+//    	System.out.print("Name" + myOption.getName());
     	return myOption;
     }
 

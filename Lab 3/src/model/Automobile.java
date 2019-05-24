@@ -100,9 +100,11 @@ public class Automobile implements Serializable {
     
     public void setOptionChoice(String setName, String optionName) {
     	System.out.print("\nU MADE IT X2\n");
-    	System.out.print("\n"+ setName + " " + optionName +"\n");
+    	System.out.print("\n"+ setName + "" + optionName +"\n");
     	if (setName != null && optionName != null) findOptionSet(setName).setOptionChoice(optionName);
-    	choices.add(findOptionSet(setName).getOptionChoice());
+//    	OptionSet.Option choice = new OptionSet.Option()
+//    	choices.set(findOptionSetIndex(setName), findOptionSet(setName).getOptionChoice());
+    	//opset.add(new OptionSet(name));
     	System.out.print("Choice " + choices.get(0));
     }
     
@@ -120,7 +122,7 @@ public class Automobile implements Serializable {
   
     public void addOptionSet(String name) {
     	opset.add(new OptionSet(name));
-//    	choices.add(findOptionSet(name).new Option());
+    	choices.add(findOptionSet(name).new Option());
     }
     
     public void addOption(int i, String optionName, double price) {
@@ -141,13 +143,15 @@ public class Automobile implements Serializable {
     }
 
     public OptionSet findOptionSet(String name) {
-    	if (!areOptionSetsNull()) {
+    	// No problem w/ OptionSet array
+//    	if (!areOptionSetsNull()) {
     		System.out.print("\nU MADE IT X3\n");
         	for (int i = 0; i < opset.size(); i++) {
-        		if (opset.get(i) != null && (opset.get(i).getName()).equals(name))
-        			return opset.get(i);
+        		opset.get(i).print();
+//        		if (opset.get(i) != null && (opset.get(i).getName()).equals(name))
+//        			return opset.get(i);
         	}
-        }
+//        }
     	return null;
     }
     
