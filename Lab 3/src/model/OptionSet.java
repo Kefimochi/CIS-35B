@@ -26,7 +26,7 @@ public class OptionSet implements Serializable {
     }
     
     protected Option getOptionChoice() {
-    	if (!choice.equals(null)) return choice;
+    	if (choice != null) return choice;
     	else return null;
     }
     
@@ -98,7 +98,7 @@ public class OptionSet implements Serializable {
             	if (opt.get(i) != null) opt.get(i).print();
             }	
     	}
-    	System.out.printf("\n**Option choice: %s\n", choice.getName());
+//    	System.out.printf("\n**Option choice: %s\n", choice.getName());
     }
 
     public class Option implements Serializable {

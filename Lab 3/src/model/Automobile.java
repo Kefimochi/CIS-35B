@@ -61,7 +61,7 @@ public class Automobile implements Serializable {
     
     public double getTotalPrice() { // <----------------
     	double totalPrice = basePrice;
-    	if(!choices.equals(null)) {
+    	if(choices != null) {
     		for (int i = 0; i < choices.size(); i++) {
     			// Add every choice's price to the base Price
     			totalPrice += getOptionChoicePrice(opset.get(i).getName());
@@ -116,6 +116,7 @@ public class Automobile implements Serializable {
   
     public void addOptionSet(String name) {
     	opset.add(new OptionSet(name));
+//    	choices.add(findOptionSet(name).new Option());
     }
     
     public void addOption(int i, String optionName, double price) {
@@ -194,15 +195,15 @@ public class Automobile implements Serializable {
     }    
 
     public boolean areOptionSetsNull() {
-        return opset.equals(null);
+        return opset == null;
     }
     
     public boolean areOptionsNull(int i) {
-    	return (opset.get(i).getOptions()).equals(null);
+    	return (opset.get(i).getOptions()) == null;
     }
 
     public void print() {
-        System.out.printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n%s\nBase price is $%.2f\n", name, basePrice);
+        System.out.printf("~~~~~~~~~~~~~~~~~~~~~~~~~~\n%s\nBase price is $%.2f\n", name, basePrice);
         if (!areOptionSetsNull()) {
     		for(int i = 0; i < opset.size(); i++) {
             	if (opset.get(i) != null) opset.get(i).print();

@@ -56,14 +56,12 @@ public class FileIO {
 			
 			Automobile myCar = new Automobile(
 					name, basePrice);
-			System.out.println("Test: " + name + "\nPrice " + price + "\nBasePrice " + basePrice);
 			int i = 0;
 			boolean eof = false;
 			buff.readLine(); // Skip a line
 			while (!eof) {
 				try {
 					String temp = buff.readLine();
-					System.out.println("\nTEMP NAME" + temp);
 					if (temp.equals("")) {
 						throw new ExceptionAuto(401);
 					} else {
@@ -74,18 +72,12 @@ public class FileIO {
 					log(w, e);
 				}
 				myCar.addOptionSet(name);
-				System.out.println("`````````Test: " + name + "\nPrice " + price + "\nBasePrice " + basePrice + "```````");
-				
 				optionName = buff.readLine();
 				while(!optionName.equals("****************") && !optionName.equals(" ")) {
-					System.out.print("\nOption name: " + optionName);
-					
 					price = Integer.parseInt(buff.readLine());
-					System.out.println("\nOption price: " + price + "\n");
 					myCar.addOption(i, optionName, price);
 					
 					optionName = buff.readLine();
-					System.out.print("Name " + optionName + " Price " + basePrice + price);
 				}
 				i++;
 				if (optionName == null || optionName.equals(" ")) {
@@ -93,7 +85,6 @@ public class FileIO {
 					optionName = "";
 					break;
 				}
-//				System.out.print("hhhhhhName " + optionName + "Price " + basePrice + price);
 			}
 			
 
