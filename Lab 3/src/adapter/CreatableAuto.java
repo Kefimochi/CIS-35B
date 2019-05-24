@@ -11,4 +11,6 @@ public interface CreatableAuto {
 	
 	// This function searches and prints the properties of a given Automodel.
 	public void printAuto(String Modelname);
+
+	public void chooseOption(String modelName, String optionSetName, String optionName);
 }

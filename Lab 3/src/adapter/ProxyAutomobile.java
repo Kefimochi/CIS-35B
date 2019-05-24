@@ -19,6 +19,10 @@ public abstract class ProxyAutomobile {
 		a1.updateOptionPrice(optionSetName, optionName, newPrice);
 	}
 	
+	public void chooseOption(String modelName, String optionSetName, String optionName) {
+		a1.setOptionChoice(optionSetName, optionName);
+	}
+	
 	public void BuildAuto(String fileName, LinkedHashMap<String, Automobile> map) {
 		FileIO f = new FileIO();
 		try {

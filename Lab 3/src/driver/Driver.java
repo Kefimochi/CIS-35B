@@ -13,10 +13,8 @@ public class Driver {
 		
 //		To acess and store value
 		// boolean containsKey(Object key) && containsVa;ue
-//		Integer a = map.get("vishal"); 
-//         System.out.println("value for key \"vishal\" is:- " + a); 
 		
-		CreatableAuto a1 = new BuildAuto(); // call .put() in build auto
+		CreatableAuto a1 = new BuildAuto(); 
 		CreatableAuto a2 = new BuildAuto();
 		CreatableAuto a3 = new BuildAuto();
 		try {
@@ -27,29 +25,22 @@ public class Driver {
 						+ "TARDIS.txt", map);
 				a3.BuildAuto("D:\\Coding Projects\\CIS 35B\\Lab 3\\data\\" 
 						+ "ford_zagoon_pro.txt", map);
-				
-//				map.get("TARDIS 2.0").print();
-//				map.get("Ford WagonZTW").print();
-//				map.get("Ford ZagoonPro").print();
-				
+
+//				a2.chooseOption("modelName", "Color", "Deep Blue");
+//				a2.chooseOption("modelName", "Functionality", "Traveling in time");
+//				a2.chooseOption("modelName", "Doctor as companion", "Yes");
 				map.entrySet().forEach(entry -> {
-					if (entry != null) map.get(entry.getKey()).print();
+					// Functions like map.get("Ford ZagoonPro").print();
+					if (!entry.equals(null)) map.get(entry.getKey()).print();
 		        });
-				
-				map.get(0).print();
-//				a1.printAuto("ModelName");	
-//				a2.printAuto("ModelName");
 			} catch (NullPointerException e) {
-				throw new ExceptionAuto();
+				throw new ExceptionAuto(); // Throws unknown error
 			}	
 		} catch (ExceptionAuto e) {
 			FixableAuto a5 = new BuildAuto();
 			a5.fix(); //Don't forget to write fix
 		}
-		
-		
-		//Choose option choices
-		
+			
 //		System.out.printf("\n~~~~~~~~~~~~"
 //				+ "Data from the text file:\n");
 //		car.print();
