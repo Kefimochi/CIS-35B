@@ -23,6 +23,7 @@ public abstract class ProxyAutomobile {
 		FileIO f = new FileIO();
 		try {
 			a1 = f.readFile(fileName);	
+			map.put(a1.getName(), a1);
 		} catch (ExceptionAuto e) {
 			e.printStackTrace();
 		}
