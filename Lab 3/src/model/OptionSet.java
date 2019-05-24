@@ -77,7 +77,7 @@ public class OptionSet implements Serializable {
     	Option myOption = new Option();
     	int index = findOptionIndex(name);
     	myOption = (index != -1) ? opt.get(index) : null;
-    	System.out.print(myOption.getName());
+    	System.out.print("Name" + myOption.getName());
     	return myOption;
     }
 
