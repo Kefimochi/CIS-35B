@@ -1,26 +1,34 @@
-package Adapter;
+package adapterPackage;
+import java.io.File;
+import exceptionPackage.ExceptionAuto;
 import modelPackage.*;
 import utilPackage.FileIO;
 
-public abstract class proxyAutomobile {
+public abstract class ProxyAutomobile {
 	private static Automobile a1;
 	
-	public void updateOptionSetName(String Modelname, String OptionSetname, String
+	public void updateOptionSetName(String modelName, String optionSetName, String
 			newName) {
-		a1.updateOptionSetName(OptionSetname, newName); //  <----------------------------
+		a1.updateOptionSetName(optionSetName, newName);
 	}
 	
-	public void updateOptionPrice(String Modelname, String Optionname, String
-			Option, float newprice) {
-		a1.updateOptionPrice(Modelname, Optionname, newprice);
+	public void updateOptionPrice(String modelName, String optionSetName, String
+			optionName, float newPrice) {
+		a1.updateOptionPrice(optionSetName, optionName, newPrice);
 	}
 	
 	public void BuildAuto(String fileName) {
 		FileIO f = new FileIO();
-		a1 = f.readFile(fileName);
+		try {
+			a1 = f.readFile(fileName);	
+		} catch (ExceptionAuto e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void printAuto(String Modelname) {
 		a1.print();
 	}
+	
+	public void fix() {}
 }

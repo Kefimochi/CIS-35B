@@ -203,7 +203,7 @@ public class Automobile implements Serializable {
     }
 
     public void print() {
-        System.out.printf("~~~~~~~~~~~~~~~~~~~~~~~~~~\n%s\nBase price is $%.2f\n", name, basePrice);
+        System.out.printf("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n%s\nBase price is $%.2f\n", name, basePrice);
         if (!areOptionSetsNull()) {
     		for(int i = 0; i < opset.size(); i++) {
             	if (opset.get(i) != null) opset.get(i).print();

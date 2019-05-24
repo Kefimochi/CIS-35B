@@ -1,9 +1,7 @@
-Ford Zagoon Pro
+Ford ZagoonPro
 39000
-5
-*************
+****************
 Color
-6
 Fort Knox Gold Clearcoat Metallic
 0
 Liquid Grey Clearcoat Metallic
@@ -16,33 +14,30 @@ Metallic
 300
 Sangria Red Clearcoat Metallic
 1200
-*************
+****************
 Transmission
-2
 Automatic
 0
 Standard
 216
-*************
+****************
 Brakes/Traction Control
-3
 Standard
 0
 ABS
 350
 ABS with Advance Trac
 1000
-*************
+****************
 Side Impact Air Bags 
-2
 None
 0
 Selected
 480
-*************
+****************
 Power Moonroof
-2
 None
 0
 Selected
 690
+ 

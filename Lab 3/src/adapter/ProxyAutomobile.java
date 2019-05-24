@@ -1,6 +1,6 @@
 package adapter;
 import java.io.File;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import exceptions.ExceptionAuto;
 import model.*;
@@ -19,7 +19,7 @@ public abstract class ProxyAutomobile {
 		a1.updateOptionPrice(optionSetName, optionName, newPrice);
 	}
 	
-	public void BuildAuto(String fileName, HashMap<String, Automobile> map) {
+	public void BuildAuto(String fileName, LinkedHashMap<String, Automobile> map) {
 		FileIO f = new FileIO();
 		try {
 			a1 = f.readFile(fileName);	
