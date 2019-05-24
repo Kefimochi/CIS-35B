@@ -26,9 +26,9 @@ public class Driver {
 				a3.BuildAuto("D:\\Coding Projects\\CIS 35B\\Lab 3\\data\\" 
 						+ "ford_zagoon_pro.txt", map);
 
-//				a2.chooseOption("modelName", "Color", "Deep Blue");
-//				a2.chooseOption("modelName", "Functionality", "Traveling in time");
-//				a2.chooseOption("modelName", "Doctor as companion", "Yes");
+				a2.chooseOption("modelName", "Color", "Deep Blue");
+				a2.chooseOption("modelName", "Functionality", "Traveling in time");
+				a2.chooseOption("modelName", "Doctor as companion", "Yes");
 				map.entrySet().forEach(entry -> {
 					// Functions like map.get("Ford ZagoonPro").print();
 					if (!entry.equals(null)) map.get(entry.getKey()).print();

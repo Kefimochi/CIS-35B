@@ -99,7 +99,11 @@ public class Automobile implements Serializable {
     }
     
     public void setOptionChoice(String setName, String optionName) {
-    	findOptionSet(setName).setOptionChoice(optionName);
+    	System.out.print("\nU MADE IT X2\n");
+    	System.out.print("\n"+ setName + " " + optionName +"\n");
+    	if (setName != null && optionName != null) findOptionSet(setName).setOptionChoice(optionName);
+    	choices.add(findOptionSet(setName).getOptionChoice());
+    	System.out.print("Choice " + choices.get(0));
     }
     
     public void setChoices(List<OptionSet.Option> choices) {
@@ -138,6 +142,7 @@ public class Automobile implements Serializable {
 
     public OptionSet findOptionSet(String name) {
     	if (!areOptionSetsNull()) {
+    		System.out.print("\nU MADE IT X3\n");
         	for (int i = 0; i < opset.size(); i++) {
         		if (opset.get(i) != null && (opset.get(i).getName()).equals(name))
         			return opset.get(i);
