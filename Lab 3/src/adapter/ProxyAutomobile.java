@@ -19,7 +19,6 @@ public abstract class ProxyAutomobile {
 	}
 	
 	public void chooseOption(String modelName, String optionSetName, String optionName) {
-		System.out.print("\nU MADE IT\n");
 		a1.setOptionChoice(optionSetName, optionName);
 	}
 	

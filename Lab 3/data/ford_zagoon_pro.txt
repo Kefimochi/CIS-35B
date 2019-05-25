@@ -29,7 +29,7 @@ ABS
 ABS with Advance Trac
 1000
 ****************
-Side Impact Air Bags 
+Side Impact Air Bags
 None
 0
 Selected

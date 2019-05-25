@@ -19,7 +19,7 @@ Automatic
 Manual
 -815
 ****************
-Brakes / Traction Control
+Brakes/Traction Control
 Standard
 0
 ABS
