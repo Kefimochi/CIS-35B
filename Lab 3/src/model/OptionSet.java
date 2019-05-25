@@ -48,6 +48,10 @@ public class OptionSet implements Serializable {
         this.opt = opt;
     }
     
+    protected void setChoice(String optionName) {
+    	choice = findOption(optionName);
+    }
+    
     protected void addOption(String optionName, double price) {
 		opt.add(new Option(optionName, price));
 	}
