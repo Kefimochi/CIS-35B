@@ -24,6 +24,22 @@ public abstract class ProxyAutomobile {
 		a1.get(carName).print();
 	}
 	
+	public void addOptionSet(String carName, String optionSetName) {
+		a1.get(carName).addOptionSet(optionSetName);
+	}
+	
+	public void removeOptionSet(String carName, String optionSetName) {
+		a1.get(carName).deleteOptionSet(optionSetName);
+	}
+	
+	public void addOption(String carName, String optionSetName, String OptionName, double optionPrice) {
+		a1.get(carName).addOption(a1.get(carName).findOptionSetIndex(optionSetName), OptionName, optionPrice);
+	}
+	
+	public void removeOption(String carName, String optionSetName, String OptionName) {
+		a1.get(carName).deleteOption(optionSetName, OptionName);
+	}
+	
 	public void updateOptionSetName(String carName,
 			String optionSetName, String newOptionSetName) {
 		a1.get(carName).updateOptionSetName(optionSetName, newOptionSetName);
