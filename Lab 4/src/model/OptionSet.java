@@ -148,8 +148,8 @@ public class OptionSet implements Serializable {
 		}
 		
 		protected void print() {
-			System.out.printf(" - %s, $%.2f\n", name, price);
-		}
+            System.out.printf("~ %s: $%.2f\n", name, price);
+        }
 		
 	}
 	

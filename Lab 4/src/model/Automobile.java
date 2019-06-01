@@ -33,59 +33,59 @@ public class Automobile implements Serializable {
         choices = new ArrayList<OptionSet.Option>();
 	}
 
-	public String getName() {
+	public synchronized String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public synchronized void setName(String name) {
 		this.name = name;
 	}
 
-	public String getMake() {
+	public synchronized String getMake() {
 		return make;
 	}
 
-	public void setMake(String make) {
+	public synchronized void setMake(String make) {
 		this.make = make;
 	}
 
-	public String getModel() {
+	public synchronized String getModel() {
 		return model;
 	}
 
-	public void setModel(String model) {
+	public synchronized void setModel(String model) {
 		this.model = model;
 	}
 
-	public double getBasePrice() {
+	public synchronized double getBasePrice() {
 		return basePrice;
 	}
 
-	public void setBasePrice(double basePrice) {
+	public synchronized void setBasePrice(double basePrice) {
 		this.basePrice = basePrice;
 	}
 
-	public List getOptionSets() {
+	public synchronized List getOptionSets() {
 		return optionSets;
 	}
 	
-	public OptionSet getOptionSet(int i) {
+	public synchronized OptionSet getOptionSet(int i) {
 		return optionSets.get(i);
 	}
 	
-	public OptionSet.Option getOption(int i, int j) {
+	public synchronized OptionSet.Option getOption(int i, int j) {
 		return optionSets.get(i).getOptions(j);
 	}
 
-	public void setOptionSets(List optionSets) {
+	public synchronized void setOptionSets(List optionSets) {
 		this.optionSets = optionSets;
 	}
 	
-	public OptionSet.Option getOptionChoice(String optionSetName) {
+	public synchronized OptionSet.Option getOptionChoice(String optionSetName) {
 		return findOptionSet(optionSetName).getChoice();
 	}
 	
-	public void setOptionChoice(String optionSetName, 
+	public synchronized void setOptionChoice(String optionSetName, 
 			String optionName) {
 		if ((findOptionSet(optionSetName) != null) && 
 				(findOptionSet(optionSetName).
@@ -102,17 +102,17 @@ public class Automobile implements Serializable {
 //			optionSets[i] = new OptionSet();
 //	}
 	
-	public void addOptionSet(String optionSetName) {
+	public synchronized void addOptionSet(String optionSetName) {
 		optionSets.add(new OptionSet(optionSetName));
 		choices.add(findOptionSet(optionSetName).new Option());
 	}
 	
-	public void addOption(int i,
+	public synchronized void addOption(int i,
 			String optionName, double price) {
 		optionSets.get(i).addOption(optionName, price);
 	}
 	
-	public int findOptionSetIndex(String optionSetName) {
+	public synchronized int findOptionSetIndex(String optionSetName) {
 		if (!isOptionSetsEmpty()) {
 			for (int i = 0; i < optionSets.size(); i++) {
 				if (optionSets.get(i) != null && 
@@ -123,12 +123,12 @@ public class Automobile implements Serializable {
 		return -1;
 	}
 	
-	public OptionSet findOptionSet(String optionSetName) {
+	public synchronized OptionSet findOptionSet(String optionSetName) {
 		int index = findOptionSetIndex(optionSetName);
 		return (index != -1) ? optionSets.get(index) : null;
 	}
 	
-	public OptionSet.Option findOption(
+	public synchronized OptionSet.Option findOption(
 			String optionSetName, String optionName) {
 		if (findOptionSet(optionSetName) != null)
 			return findOptionSet(optionSetName)
@@ -137,41 +137,41 @@ public class Automobile implements Serializable {
 			return null;
 	}
 	
-	public void deleteOptionSet(String optionSetName) {
+	public synchronized void deleteOptionSet(String optionSetName) {
 		int index = findOptionSetIndex(optionSetName);
 		if (index != -1)
 			optionSets.set(index, null);
 	}
 	
-	public void deleteOption(
+	public synchronized void deleteOption(
 			String optionSetName, String optionName) {
 		if (findOptionSet(optionSetName) != null)
 			findOptionSet(optionSetName)
 					.deleteOption(optionName);
 	}
 	
-	public void updateOptionSet(String optionSetName,
+	public synchronized void updateOptionSet(String optionSetName,
 			OptionSet newOptionSet) {
 		int index = findOptionSetIndex(optionSetName);
 		if (index != -1)
 			optionSets.set(index, newOptionSet);
 	}
 	
-	public void updateOption(String optionSetName, 
+	public synchronized void updateOption(String optionSetName, 
 			String optionName, OptionSet.Option newOption) {
 		if (findOptionSet(optionSetName) != null)
 			findOptionSet(optionSetName)
 					.updateOption(optionName, newOption);
 	}
 	
-	public void updateOptionSetName(String optionSetName,
+	public synchronized void updateOptionSetName(String optionSetName,
 			String newOptionSetName) {
 		int index = findOptionSetIndex(optionSetName);
 		if (index != -1)
 			optionSets.get(index).setName(newOptionSetName);
 	}
 	
-	public void updateOptionName(String optionSetName,
+	public synchronized void updateOptionName(String optionSetName,
 			String optionName, String newOptionName) {
 		int index = findOptionSetIndex(optionSetName);
 		if (index != -1)
@@ -179,7 +179,7 @@ public class Automobile implements Serializable {
 			optionName, newOptionName);
 	}
 	
-	public void updateOptionPrice(String optionSetName,
+	public synchronized void updateOptionPrice(String optionSetName,
 			String optionName, double newPrice) {
 		int index = findOptionSetIndex(optionSetName);
 		if (index != -1)
@@ -187,22 +187,22 @@ public class Automobile implements Serializable {
 			optionName, newPrice);
 	}
 	
-	public boolean isOptionSetsEmpty() {
+	public synchronized boolean isOptionSetsEmpty() {
 		return optionSets.isEmpty();
 	}
 	
-	public boolean isOptionsNull(String optionSetName) {
+	public synchronized boolean isOptionsNull(String optionSetName) {
 		if (findOptionSet(optionSetName) != null)
 			return findOptionSet(optionSetName).isOptionsEmpty();
 		else
 			return true;
 	}
 	
-	public boolean areOptionSetsNull() {
+	public synchronized boolean areOptionSetsNull() {
         return optionSets == null;
     }
 	
-	public void print() {
+	public synchronized void print() {
         System.out.printf("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n%s\nBase price is $%.2f\n", name, basePrice);
         if (!areOptionSetsNull()) {
     		for(int i = 0; i < optionSets.size(); i++) {
@@ -213,14 +213,14 @@ public class Automobile implements Serializable {
         System.out.printf("\t\t~~Total price: $%.2f", totalPrice);
     }
 	
-	public void calculateTotalPrice() {
+	public synchronized void calculateTotalPrice() {
 		totalPrice = basePrice;
 		for (int i = 0; i < choices.size(); i++) {
 			totalPrice += choices.get(i).getPrice();
 		}
 	}
 	
-	public void printChoices() {
+	public synchronized void printChoices() {
 		System.out.printf("Your Option Choices for %s:\n", name);
 		for (int i = 0; i < choices.size(); i++) {
 			choices.get(i).print();
