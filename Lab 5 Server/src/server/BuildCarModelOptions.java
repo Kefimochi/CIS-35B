@@ -39,7 +39,7 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 		//add code to buildauto
 			Automobile a1 = null;
 			try {
-				a1 = buildAuto(obj);
+				a1 = buildAutoFromProps(obj);
 			} catch (ExceptionAuto e) {
 				e.printStackTrace();
 			}

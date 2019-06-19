@@ -17,17 +17,17 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 			new LinkedHashMap<String, Automobile>();
 	private ArrayList<String> modelNames = new ArrayList<String>();
 	
-//	public synchronized void buildAuto(String carName, String fileName) {
-//		FileIO f = new FileIO();
-//		try {
-//			a1.put(carName, f.readFile(fileName)); 
-//			modelNames.add(carName);
-//		} catch (ExceptionAuto e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public synchronized void buildAuto(String carName, String fileName) {
+		FileIO f = new FileIO();
+		try {
+			a1.put(carName, f.readFile(fileName)); 
+			modelNames.add(carName);
+		} catch (ExceptionAuto e) {
+			e.printStackTrace();
+		}
+	}
 	
-	public synchronized Automobile buildAuto(Object obj) throws ExceptionAuto {
+	public synchronized Automobile buildAutoFromProps(Object obj) throws ExceptionAuto {
 		FileIO f = new FileIO();
 		Automobile auto = null;
 		try {

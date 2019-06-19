@@ -19,8 +19,29 @@ import model.Automobile;
 
 public class FileIO {
 	public Automobile readPropsFile(Object obj) throws ExceptionAuto {
+		String optionName = "";
+		double price = 0;
+		String name = ((Properties) obj).getProperty("carModel") + " " + 
+				((Properties) obj).getProperty("carMake");
+		System.out.println("Print name: " + name);
+		System.out.println("Print: " + ((Properties) obj).getProperty("price"));
+		double basePrice = Double.parseDouble(((Properties) obj).getProperty("price"));
+		System.out.println("Print double: " + basePrice);
+		Automobile myCar = new Automobile(name, basePrice);
 		
-		return null;
+		for (int i = 1; i <= Integer.parseInt(((Properties) obj).getProperty("OptionSetsTotalSize")); i++) {
+			name = ((Properties) obj).getProperty("Option" + i);
+			myCar.addOptionSet(name);
+			
+			for (int j = 1; j <= Integer.parseInt(((Properties) obj).getProperty("Option" + i +"size")); j++) {
+				optionName = ((Properties) obj).getProperty("Option" + i +"Value" + j);
+				price = Double.parseDouble(((Properties) obj).getProperty("Option" + i +"Value" + j));
+				myCar.addOption(i, optionName, price);
+			}
+		}
+//		myCar.addOptionSet(name);
+//		myCar.addOption(i, optionName, price);
+		return myCar;
 	}
 	
 	public Automobile readFile(String fileName) throws ExceptionAuto {
