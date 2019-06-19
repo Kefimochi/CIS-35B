@@ -29,18 +29,17 @@ public class FileIO {
 		System.out.println("Print double: " + basePrice);
 		Automobile myCar = new Automobile(name, basePrice);
 		
-		for (int i = 1; i <= Integer.parseInt(((Properties) obj).getProperty("OptionSetsTotalSize")); i++) {
-			name = ((Properties) obj).getProperty("Option" + i);
+		for (int i = 0; i < Integer.parseInt(((Properties) obj).getProperty("OptionSetsTotalSize")); i++) {
+			name = ((Properties) obj).getProperty("Option" + (i+1));
 			myCar.addOptionSet(name);
 			
-			for (int j = 1; j <= Integer.parseInt(((Properties) obj).getProperty("Option" + i +"size")); j++) {
-				optionName = ((Properties) obj).getProperty("Option" + i +"Value" + j);
-				price = Double.parseDouble(((Properties) obj).getProperty("Option" + i +"Value" + j));
+			for (int j = 0; j < Integer.parseInt(((Properties) obj).getProperty("Option" + (i + 1) +"size")); j++) {
+				optionName = ((Properties) obj).getProperty("Option" + (i + 1) +"Value" + (j + 1));
+				price = Double.parseDouble(((Properties) obj).getProperty("Option" + (i + 1) +"Price" + (j + 1)));
 				myCar.addOption(i, optionName, price);
 			}
 		}
-//		myCar.addOptionSet(name);
-//		myCar.addOption(i, optionName, price);
+		myCar.print();
 		return myCar;
 	}
 	
