@@ -11,6 +11,7 @@
 package server;
 import util.*;
 import adapter.*;
+import exception.ExceptionAuto;
 import model.Automobile;
 
 public class BuildCarModelOptions extends ProxyAutomobile {
@@ -36,7 +37,13 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 
 		if (state == REQUEST_BUILD_AUTO) {
 		//add code to buildauto
-			Automobile a1 = readPropsFile(obj);
+			Automobile a1 = null;
+			try {
+				a1 = buildAuto(obj);
+			} catch (ExceptionAuto e) {
+				e.printStackTrace();
+			}
+
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
 		}

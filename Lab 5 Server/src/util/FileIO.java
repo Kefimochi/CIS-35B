@@ -18,7 +18,7 @@ import exception.*;
 import model.Automobile;
 
 public class FileIO {
-	public Automobile readPropsFile(Properties obj) throws ExceptionAuto {
+	public Automobile readPropsFile(Object obj) throws ExceptionAuto {
 		
 		return null;
 	}
