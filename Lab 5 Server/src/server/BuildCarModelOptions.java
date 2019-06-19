@@ -9,8 +9,9 @@
 //		proxyAutomobile class and called in a method of BuildCarModelOptions.
 
 package server;
-
+import util.*;
 import adapter.*;
+import model.Automobile;
 
 public class BuildCarModelOptions extends ProxyAutomobile {
 
@@ -35,6 +36,7 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 
 		if (state == REQUEST_BUILD_AUTO) {
 		//add code to buildauto
+			Automobile a1 = readPropsFile(obj);
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
 		}
@@ -60,7 +62,7 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 		else if (i == 2) {
 			this.state = REQUEST_CONFIGURE_AUTO;
 			output = "Select an Automobile from the following list to configure: \n";
-//					super.getAllModels();
+					super.getAllModels();
 		}
 		else {
 			output = "Invalid request";

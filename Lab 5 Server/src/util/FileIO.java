@@ -12,11 +12,17 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.util.Properties;
 
 import exception.*;
 import model.Automobile;
 
 public class FileIO {
+	public Automobile readPropsFile(Properties obj) throws ExceptionAuto {
+		
+		return null;
+	}
+	
 	public Automobile readFile(String fileName) throws ExceptionAuto {
 		try {
 			FileReader file = null;

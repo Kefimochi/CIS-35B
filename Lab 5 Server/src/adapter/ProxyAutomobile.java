@@ -1,5 +1,6 @@
 package adapter;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import server.DefaultServerSocket;
@@ -13,11 +14,13 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 	
 	private static LinkedHashMap<String, Automobile> a1 = 
 			new LinkedHashMap<String, Automobile>();
+	private ArrayList<String> modelNames = new ArrayList<String>();
 	
 	public synchronized void buildAuto(String carName, String fileName) {
 		FileIO f = new FileIO();
 		try {
 			a1.put(carName, f.readFile(fileName));
+			modelNames.add(carName);
 		} catch (ExceptionAuto e) {
 			e.printStackTrace();
 		}
@@ -110,10 +113,16 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 	}
 
 	public void serve(int port) {
-//		ClientInterface in = new DefaultSocketClient("localhost" , 4444);
-//		in.run();
 		ServerInterface in = new DefaultServerSocket(port);
 		in.run();
+	}
+
+	public String getAllModels() {
+		String names = " ";
+		for(int i = 0; i < modelNames.size(); i++) {
+			names += modelNames.get(i) + " ";
+		}
+		return names;
 	}	
 }
 
