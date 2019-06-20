@@ -27,16 +27,13 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 		}
 	}
 	
-	public synchronized Automobile buildAutoFromProps(Object obj) throws ExceptionAuto {
+	public synchronized Automobile buildAutoFromProps(Object obj) {
 		FileIO f = new FileIO();
 		Automobile auto = null;
-		try {
-			auto = f.readPropsFile(obj);
-		} catch (ExceptionAuto e) {
-			e.printStackTrace();
-		}
+		auto = f.readPropsFile(obj);
 		
 		a1.put(auto.getName(), auto); 
+		System.out.print("Name " + auto.getName());
 		modelNames.add(auto.getName());
 		
 		return auto;
@@ -134,12 +131,21 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 	}
 
 	public String getAllModels() {
-		String names = " ";
+		String names = "";
 		for(int i = 0; i < modelNames.size(); i++) {
 			names += modelNames.get(i) + " ";
 		}
 		return names;
 	}	
+	
+	public String getNameByNumber(int i) {
+		return modelNames.get(i-1);
+	}
+	
+	public Automobile getAutoObject(int i) {
+		String name = getNameByNumber(i);
+		return a1.get(name);
+	}
 }
 
 

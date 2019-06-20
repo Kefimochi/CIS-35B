@@ -18,28 +18,25 @@ import exception.*;
 import model.Automobile;
 
 public class FileIO {
-	public Automobile readPropsFile(Object obj) throws ExceptionAuto {
+	public Automobile readPropsFile(Object obj) {
+		Properties property = (Properties) obj;
 		String optionName = "";
 		double price = 0;
-		String name = ((Properties) obj).getProperty("carModel") + " " + 
-				((Properties) obj).getProperty("carMake");
-		System.out.println("Print name: " + name);
-		System.out.println("Print: " + ((Properties) obj).getProperty("price"));
-		double basePrice = Double.parseDouble(((Properties) obj).getProperty("price"));
-		System.out.println("Print double: " + basePrice);
+		String name = property.getProperty("carModel") + " " +  
+				property.getProperty("carMake");
+		double basePrice = Double.parseDouble(property.getProperty("price"));
 		Automobile myCar = new Automobile(name, basePrice);
 		
-		for (int i = 0; i < Integer.parseInt(((Properties) obj).getProperty("OptionSetsTotalSize")); i++) {
-			name = ((Properties) obj).getProperty("Option" + (i+1));
+		for (int i = 0; i < Integer.parseInt(property.getProperty("OptionSetsTotalSize")); i++) {
+			name = property.getProperty("Option" + (i+1));
 			myCar.addOptionSet(name);
 			
-			for (int j = 0; j < Integer.parseInt(((Properties) obj).getProperty("Option" + (i + 1) +"size")); j++) {
-				optionName = ((Properties) obj).getProperty("Option" + (i + 1) +"Value" + (j + 1));
-				price = Double.parseDouble(((Properties) obj).getProperty("Option" + (i + 1) +"Price" + (j + 1)));
+			for (int j = 0; j < Integer.parseInt(property.getProperty("Option" + (i + 1) +"size")); j++) {
+				optionName = property.getProperty("Option" + (i + 1) +"Value" + (j + 1));
+				price = Double.parseDouble(property.getProperty("Option" + (i + 1) +"Price" + (j + 1)));
 				myCar.addOption(i, optionName, price);
 			}
 		}
-		myCar.print();
 		return myCar;
 	}
 	

@@ -34,24 +34,34 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 
 	public Object processRequest(Object obj) {
 		Object toClient = null;
+		Automobile a1 = null;
 
 		if (state == REQUEST_BUILD_AUTO) {
-		//add code to buildauto
-			Automobile a1 = null;
-			try {
-				a1 = buildAutoFromProps(obj);
-			} catch (ExceptionAuto e) {
-				e.printStackTrace();
-			}
-
+			a1 = buildAutoFromProps(obj);
+			printAuto(a1.getName());
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
 		}
 		else if (state == REQUEST_CONFIGURE_AUTO) {
-		//add code for configureauto
+			// Get the linked map, find the place in the map, return object
+//			getModelByNumber
+			System.out.println("Here's parsed int obj: " + Integer.parseInt((String) obj));
+			toClient = getAutoObject(Integer.parseInt((String) obj));
+			
+			a1 = buildAutoFromProps(obj); //Somehow builds the new auto
+			//Needs to set choices/interacctivity
+			//Like, call setOptionChoice. cool
+			
+			printAuto(a1.getName());
+			toClient = "Successfully configured the car!";
+			// Somehow returns object
+			
+			// ONLY GETS THE OBJECT< THE REST IF HANDLES BY THE CLIENT
+			
+			
 		}
 		else {
-
+			System.out.println("Innapropriate response. Try again");
 		}
 
 		this.state = WAITING;
@@ -68,8 +78,8 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 		}
 		else if (i == 2) {
 			this.state = REQUEST_CONFIGURE_AUTO;
-			output = "Select an Automobile from the following list to configure: \n";
-					super.getAllModels();
+			output = "Select an Automobile from the following list to configure: \n" +
+					getAllModels();
 		}
 		else {
 			output = "Invalid request";
