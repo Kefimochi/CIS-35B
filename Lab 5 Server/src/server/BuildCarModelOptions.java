@@ -42,18 +42,14 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
 		}
-		else if (state == REQUEST_CONFIGURE_AUTO) {
-			// Get the linked map, find the place in the map, return object
-//			getModelByNumber
-			System.out.println("Here's parsed int obj: " + Integer.parseInt((String) obj));
-			toClient = getAutoObject(Integer.parseInt((String) obj));
+		else if (state == REQUEST_CONFIGURE_AUTO) {		
+			toClient = getAutoObject(Integer.parseInt(obj.toString())); // The object I need. THE Auto one
 			
-			a1 = buildAutoFromProps(obj); //Somehow builds the new auto
+//			a1 = buildAutoFromProps(obj); //Somehow builds the new auto
 			//Needs to set choices/interacctivity
 			//Like, call setOptionChoice. cool
 			
-			printAuto(a1.getName());
-			toClient = "Successfully configured the car!";
+//			printAuto(a1.getName());
 			// Somehow returns object
 			
 			// ONLY GETS THE OBJECT< THE REST IF HANDLES BY THE CLIENT

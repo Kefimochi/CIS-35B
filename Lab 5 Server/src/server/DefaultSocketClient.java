@@ -79,6 +79,7 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 
 	public void sendOutput(Object obj) {
 		try {
+			out.flush();
 			out.writeObject(obj);
 		}
 		catch (IOException e) {
@@ -111,7 +112,10 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 					fromClient = Integer.parseInt(in.readObject().toString()); // Client chooses the model (1 to n)
 					if (DEBUG)
 						System.out.println("Sending Automobile object to client ... ");
-					toClient = protocol.processRequest(fromClient); // Will be Auto type
+					// Send somewhere that object to the client, where the client will call SelectCarOptions
+					
+					
+					toClient = protocol.processRequest(fromClient); // Will be Auto OBJECT
 					sendOutput(toClient);
 					break;
 

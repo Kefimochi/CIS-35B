@@ -145,7 +145,5 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 	public Automobile getAutoObject(int i) {
 		String name = getNameByNumber(i);
 		return a1.get(name);
-	}
+	}	
 }
-
-
