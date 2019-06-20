@@ -112,13 +112,10 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 					fromClient = Integer.parseInt(in.readObject().toString()); // Client chooses the model (1 to n)
 					if (DEBUG)
 						System.out.println("Sending Automobile object to client ... ");
-					// Send somewhere that object to the client, where the client will call SelectCarOptions
-					
 					
 					toClient = protocol.processRequest(fromClient); // Will be Auto OBJECT
 					sendOutput(toClient);
-					break;
-
+					break;	
 				default: //Invalid requests
 					;
 			}

@@ -61,8 +61,8 @@ public class DefaultSocketClient extends Thread implements Debuggable, ClientInt
 					System.out.println("Received server response ... ");
 				System.out.println(fromServer.toString());
 
-				if (clientProtocol.isAutomobile(fromServer))
-					clientProtocol.configureAuto(fromServer);
+				if (clientProtocol.isAutomobile(fromServer))   // IF THE OBJECT IS AUTO, SELECTCAROPTIONS
+					clientProtocol.configureAuto(fromServer); // FROM SERVER WILL BE AUTO
 
 				System.out.println("Response to server: ");
 				toServer = stdIn.readLine();

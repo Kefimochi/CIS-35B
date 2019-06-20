@@ -40,6 +40,10 @@ public class OptionSet implements Serializable {
 		return choice;
 	}
 	
+	protected double getChoicePrice() {
+		return choice.getPrice();
+	}
+	
 	protected void setChoice(String optionName) {
 		choice = findOption(optionName);
 	}

@@ -73,6 +73,10 @@ public class Automobile implements Serializable {
 		return optionSets.get(i);
 	}
 	
+	public synchronized String getOptionSetName(int i) {
+		return getOptionSet(i).getName();
+	}
+	
 	public synchronized OptionSet.Option getOption(int i, int j) {
 		return optionSets.get(i).getOptions(j);
 	}
