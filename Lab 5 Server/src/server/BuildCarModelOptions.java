@@ -44,17 +44,7 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 		}
 		else if (state == REQUEST_CONFIGURE_AUTO) {		
 			toClient = getAutoObject(Integer.parseInt(obj.toString())); // The object I need. THE Auto one
-			
-//			a1 = buildAutoFromProps(obj); //Somehow builds the new auto
-			//Needs to set choices/interacctivity
-			//Like, call setOptionChoice. cool
-			
-//			printAuto(a1.getName());
-			// Somehow returns object
-			
-			// ONLY GETS THE OBJECT< THE REST IF HANDLES BY THE CLIENT
-			
-			
+					
 		}
 		else {
 			System.out.println("Innapropriate response. Try again");

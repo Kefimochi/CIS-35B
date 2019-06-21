@@ -61,9 +61,10 @@ public class DefaultSocketClient extends Thread implements Debuggable, ClientInt
 					System.out.println("Received server response ... ");
 				System.out.println(fromServer.toString());
 
+				
 				if (clientProtocol.isAutomobile(fromServer))   // IF THE OBJECT IS AUTO, SELECTCAROPTIONS
 					clientProtocol.configureAuto(fromServer); // FROM SERVER WILL BE AUTO
-
+				
 				System.out.println("Response to server: ");
 				toServer = stdIn.readLine();
 				if (toServer.toString().contains(".prop")) {
@@ -76,7 +77,7 @@ public class DefaultSocketClient extends Thread implements Debuggable, ClientInt
 					System.out.println("Sending " + toServer + " to server ... ");
 				sendOutput(toServer);
 				System.out.println("");
-
+				
 				if (toServer.equals("0")) {
 					break;
 				}
@@ -92,7 +93,7 @@ public class DefaultSocketClient extends Thread implements Debuggable, ClientInt
 			System.exit(1);
 		}
 		catch (IOException e) {
-			System.err.println("Error in I/O stream ... ");
+			System.err.println("Error in I/O stream in Default Socket Client... ");
 			System.exit(1);
 		}
 
