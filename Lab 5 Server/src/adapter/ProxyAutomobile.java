@@ -133,7 +133,7 @@ public abstract class ProxyAutomobile implements ScaleableAuto, ServableAuto {
 	public String getAllModels() {
 		String names = "";
 		for(int i = 0; i < modelNames.size(); i++) {
-			names += modelNames.get(i) + " ";
+			names += modelNames.get(i) + "--";
 		}
 		return names;
 	}	

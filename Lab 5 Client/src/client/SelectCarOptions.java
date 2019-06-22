@@ -25,11 +25,6 @@ public class SelectCarOptions {
 	////////// INSTANCE METHODS //////////
 
 	public void configureAuto(Object obj) {
-		System.out.print("Reacehd this !!!!!!!");
-//		public synchronized void setOptionChoice(String optionSetName, 
-//				String optionName)
-		// For each optionset, the var will be updated and optionName will be asked
-		
 		BufferedReader reader =
                 new BufferedReader(new InputStreamReader(System.in));
 		Automobile auto = (Automobile) obj;
